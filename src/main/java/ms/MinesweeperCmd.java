@@ -20,7 +20,7 @@ public class MinesweeperCmd {
 		int y;
 		String readX;
 		String readY;
-		int notOpenPanelCnt = 0;
+		int closePanelCnt = 0;
 		boolean firstOpen = true;
 
 		// 初期化
@@ -28,7 +28,7 @@ public class MinesweeperCmd {
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 			while (true) {
-				notOpenPanelCnt = 0;
+				closePanelCnt = 0;
 
 				while (true) {
 					System.out.print("X座標を入力してください：");
@@ -81,12 +81,12 @@ public class MinesweeperCmd {
 				for (int i = 0; i < HEIGHT; i++) {
 					for (int j = 0; j < WIDTH; j++) {
 						if (dispMap[i][j].equals("■")) {
-							notOpenPanelCnt++;
+							closePanelCnt++;
 						}
 					}
 				}
 
-				if (notOpenPanelCnt == TOTAL_MINES) {
+				if (closePanelCnt == TOTAL_MINES) {
 					System.out.println("★☆★ゲームクリア★☆★");
 					break;
 				}
